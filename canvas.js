@@ -87,6 +87,4 @@ window.addEventListener('load', function() {
       return;
     }
   });
-
-  setInterval(updateCanvas, 100);
 });
