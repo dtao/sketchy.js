@@ -1,0 +1,113 @@
+.sketchy {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 600px;
+    width: 800px;
+    margin-top: -300px;
+    margin-left: -400px;
+}
+
+.sketchy:before {
+    content: 'Hit D to start drawing';
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 0;
+    padding: 1ex 1em;
+    color: #000;
+    cursor: pointer;
+}
+
+.sketchy.drawing:before {
+    content: 'Hit D again to stop drawing';
+}
+
+.sketchy .toolbar {
+    position: absolute;
+    padding: 1ex 1em;
+}
+
+.sketchy .toolbar:first-child {
+    top: 0;
+    left: 0;
+}
+
+.sketchy .toolbar:last-child {
+    bottom: 0;
+    right: 0;
+}
+
+.sketchy .toolbar ul {
+    display: inline-block;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+.sketchy .toolbar ul:nth-of-type(n+2) {
+    margin-left: 1em;
+}
+
+.sketchy .toolbar ul li {
+    display: inline-block;
+}
+
+.sketchy .toolbar button {
+    border: 0;
+    cursor: pointer;
+}
+
+.sketchy .toolbar ul li.brush-size.active button {
+    border-bottom: 2px solid #000;
+}
+
+.brush-sizes:before {
+    content: 'Brush size: ';
+}
+
+.sketchy .toolbar ul li.color button {
+    border: 2px solid #fff;
+    border-radius: 8px;
+    height: 16px;
+}
+
+.sketchy .toolbar ul li.color.active button {
+    border: 2px solid #000;
+}
+
+.sketchy .toolbar ul li.color[data-color="black"] button {
+    background-color: black;
+}
+
+.sketchy .toolbar ul li.color[data-color="red"] button {
+    background-color: red;
+}
+
+.sketchy .toolbar ul li.color[data-color="orange"] button {
+    background-color: orange;
+}
+
+.sketchy .toolbar ul li.color[data-color="yellow"] button {
+    background-color: yellow;
+}
+
+.sketchy .toolbar ul li.color[data-color="green"] button {
+    background-color: green;
+}
+
+.sketchy .toolbar ul li.color[data-color="blue"] button {
+    background-color: blue;
+}
+
+.sketchy .toolbar ul li.color[data-color="purple"] button {
+    background-color: purple;
+}
+
+.colors:before {
+    content: 'Color: ';
+}
+
+.colors li button {
+    background-color: attr(data-color);
+}
