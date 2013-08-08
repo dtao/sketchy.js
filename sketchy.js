@@ -1,12 +1,4 @@
 window.addEventListener('load', function() {
-  function extract(object, properties) {
-    var extracted = {};
-    for (var i = 0; i < properties.length; ++i) {
-      extracted[properties[i]] = object[properties[i]];
-    }
-    return extracted;
-  }
-
   var overlay      = document.getElementById('overlay');
   var exportButton = overlay.querySelector('button.export');
   var canvas       = document.querySelector('canvas');
