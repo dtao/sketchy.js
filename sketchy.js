@@ -39,7 +39,7 @@
         toolbar.appendChild(createToolbarMenu('colors', {
           className: 'color',
           attribute: 'data-color',
-          buttons: ['black', 'red', 'orange', 'yellow', 'green', 'blue', 'purple']
+          buttons: ['black', 'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'white']
         }));
         return toolbar;
       }
