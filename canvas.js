@@ -8,6 +8,7 @@ window.addEventListener('load', function() {
   }
 
   var overlay      = document.getElementById('overlay');
+  var exportButton = overlay.querySelector('button.export');
   var canvas       = document.querySelector('canvas');
   var canvasWidth  = canvas.width;
   var canvasHeight = canvas.height;
@@ -86,6 +87,12 @@ window.addEventListener('load', function() {
     if (drawing) {
       drawTo(e.layerX, e.layerY, 0, 0, 0, 255);
     }
+  });
+
+  exportButton.addEventListener('click', function() {
+    var img = document.createElement('img');
+    img.src = canvas.toDataURL();
+    canvas.parentNode.insertBefore(img, canvas.nextSibling);
   });
 
   document.addEventListener('keypress', function(e) {
