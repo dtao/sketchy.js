@@ -16,6 +16,7 @@ window.addEventListener('load', function() {
   var previousDot  = null;
   var drawing      = false;
   var brushSize    = 1;
+  var brushColor   = null;
 
   function drawLine(start, end) {
     context.beginPath();
@@ -23,6 +24,7 @@ window.addEventListener('load', function() {
     context.lineTo.apply(context, end);
     context.lineCap = 'round';
     context.lineWidth = brushSize;
+    context.strokeStyle = brushColor || '#000';
     context.stroke();
   }
 
@@ -54,13 +56,29 @@ window.addEventListener('load', function() {
     brushSize = (size * 2) - 1;
   }
 
+  function setBrushColor(color) {
+    var activeButton = document.querySelector('.color.active');
+    activeButton.classList.remove('active');
+
+    var targetButton = document.querySelector('.color[data-color="' + color + '"]');
+    targetButton.classList.add('active');
+
+    brushColor = color;
+  }
+
   overlay.addEventListener('click', function(e) {
     if (drawing) {
       drawTo(e.layerX, e.layerY, 0, 0, 0, 255);
     }
 
     if (e.target.nodeName === 'BUTTON') {
-      setBrushSize(Number(e.target.textContent));
+      if (e.target.parentNode.classList.contains('brush-size')) {
+        setBrushSize(Number(e.target.textContent));
+      }
+
+      if (e.target.parentNode.classList.contains('color')) {
+        setBrushColor(e.target.parentNode.getAttribute('data-color'));
+      }
     }
   });
 

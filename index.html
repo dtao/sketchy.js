@@ -41,42 +41,93 @@
             content: 'Hit D again to stop drawing';
         }
 
-        #overlay:hover:after {
-            content: 'Export';
+        .toolbar {
             position: absolute;
-            display: block;
+            padding: 1ex 1em;
+        }
+
+        .toolbar:first-child {
+            top: 0;
+            left: 0;
+        }
+
+        .toolbar:last-child {
             bottom: 0;
             right: 0;
-            padding: 1ex 1em;
-            font-family: sans-serif;
-            color: #000;
+        }
+
+        .toolbar ul {
+            display: inline-block;
+            list-style: none;
+            margin: 0;
+            padding-left: 0;
+        }
+
+        .toolbar ul:nth-of-type(n+2) {
+            margin-left: 1em;
+        }
+
+        .toolbar ul li {
+            display: inline-block;
+        }
+
+        .toolbar button {
+            border: 0;
             cursor: pointer;
         }
 
-        .brush-sizes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            list-style: none;
-            margin: 0;
-            padding: 1ex 1em;
+        .toolbar ul li.brush-size.active button {
+            border-bottom: 2px solid #000;
         }
 
         .brush-sizes:before {
             content: 'Brush size: ';
         }
 
-        .brush-size {
-            display: inline-block;
+        .toolbar ul li.color button {
+            border: 2px solid #fff;
+            border-radius: 8px;
+            height: 16px;
         }
 
-        .brush-size button {
-            border: 0;
-            cursor: pointer;
+        .toolbar ul li.color.active button {
+            border: 2px solid #000;
         }
 
-        .brush-size.active button {
-            border-bottom: 2px solid #000;
+        .toolbar ul li.color[data-color="black"] button {
+            background-color: black;
+        }
+
+        .toolbar ul li.color[data-color="red"] button {
+            background-color: red;
+        }
+
+        .toolbar ul li.color[data-color="orange"] button {
+            background-color: orange;
+        }
+
+        .toolbar ul li.color[data-color="yellow"] button {
+            background-color: yellow;
+        }
+
+        .toolbar ul li.color[data-color="green"] button {
+            background-color: green;
+        }
+
+        .toolbar ul li.color[data-color="blue"] button {
+            background-color: blue;
+        }
+
+        .toolbar ul li.color[data-color="purple"] button {
+            background-color: purple;
+        }
+
+        .colors:before {
+            content: 'Color: ';
+        }
+
+        .colors li button {
+            background-color: attr(data-color);
         }
     </style>
 
@@ -86,13 +137,29 @@
   <body>
     <canvas id="canvas" height="600px" width="800px"></canvas>
     <div id="overlay">
-        <ul class="brush-sizes">
-            <li class="brush-size active"><button>1</button></li>
-            <li class="brush-size"><button>2</button></li>
-            <li class="brush-size"><button>3</button></li>
-            <li class="brush-size"><button>4</button></li>
-            <li class="brush-size"><button>5</button></li>
-        </ul>
+        <div class="toolbar">
+            <ul class="brush-sizes">
+                <li class="brush-size active"><button>1</button></li>
+                <li class="brush-size"><button>2</button></li>
+                <li class="brush-size"><button>3</button></li>
+                <li class="brush-size"><button>4</button></li>
+                <li class="brush-size"><button>5</button></li>
+            </ul>
+
+            <ul class="colors">
+                <li class="color active" data-color="black"><button></button></li>
+                <li class="color" data-color="red"><button></button></li>
+                <li class="color" data-color="orange"><button></button></li>
+                <li class="color" data-color="yellow"><button></button></li>
+                <li class="color" data-color="green"><button></button></li>
+                <li class="color" data-color="blue"><button></button></li>
+                <li class="color" data-color="purple"><button></button></li>
+            </ul>
+        </div>
+
+        <div class="toolbar">
+            <button class="export">Export</button>
+        </div>
     </div>
   </body>
 </html>
