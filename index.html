@@ -16,13 +16,14 @@
 
         #canvas {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            height: 600px;
-            width: 800px;
-            margin-top: -300px;
-            margin-left: -400px;
+            top: 10%;
+            bottom: 10%;
+            left: 10%;
+            right: 25%;
+            height: 80%;
+            width: 65%;
             border: 1px solid black;
+            box-sizing: border-box;
         }
 
         #exports {
@@ -30,8 +31,8 @@
             top: 0;
             bottom: 0;
             right: 0;
-            width: 268px;
-            padding: 16px;
+            width: 15%;
+            padding: 10px;
             background-color: #ddd;
             text-align: center;
             overflow: auto;
@@ -40,7 +41,7 @@
         #exports img {
             height: 180px;
             width: 240px;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             background-color: white;
         }
     </style>
@@ -58,7 +59,7 @@
   </head>
 
   <body>
-    <canvas id="canvas" height="600" width="800"></canvas>
+    <canvas id="canvas"></canvas>
 
     <section id="exports"></section>
   </body>

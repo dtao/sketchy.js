@@ -1,10 +1,11 @@
 (function(doc) {
   var Sketchy = {
     fromCanvas: function(canvas, options) {
+      var canvasStyle  = window.getComputedStyle(canvas);
       var overlay      = createOverlay(canvas);
       var exportButton = overlay.querySelector('button.export');
-      var canvasWidth  = canvas.width;
-      var canvasHeight = canvas.height;
+      var canvasWidth  = parseInt(canvasStyle.width, 10);
+      var canvasHeight = parseInt(canvasStyle.height, 10);
       var context      = canvas.getContext('2d');
       var canvasData   = context.getImageData(0, 0, canvasWidth, canvasHeight);
       var previousDot  = null;
@@ -23,6 +24,10 @@
       }
 
       function createOverlay(canvas) {
+        var canvasStyle = window.getComputedStyle(canvas);
+        canvas.height = parseInt(canvasStyle.height, 10);
+        canvas.width = parseInt(canvasStyle.width, 10);
+
         // Insert a <div class="sketchy"> after the canvas
         var overlayElement = createElement('div', 'sketchy');
         canvas.parentNode.insertBefore(overlayElement, canvas.nextSibling);
