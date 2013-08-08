@@ -24,6 +24,25 @@
             margin-left: -400px;
             border: 1px solid black;
         }
+
+        #exports {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 268px;
+            padding: 16px;
+            background-color: #ddd;
+            text-align: center;
+            overflow: auto;
+        }
+
+        #exports img {
+            height: 180px;
+            width: 240px;
+            margin-bottom: 16px;
+            background-color: white;
+        }
     </style>
 
     <link rel="stylesheet" type="text/css" href="sketchy.css" />
@@ -31,12 +50,16 @@
 
     <script>
         window.addEventListener('load', function() {
-            Sketchy.fromCanvas(document.getElementById('canvas'));
+          Sketchy.fromCanvas(document.getElementById('canvas'), {
+            exportLocation: document.getElementById('exports')
+          });
         });
     </script>
   </head>
 
   <body>
     <canvas id="canvas" height="600" width="800"></canvas>
+
+    <section id="exports"></section>
   </body>
 </html>

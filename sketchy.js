@@ -1,6 +1,6 @@
 (function(doc) {
   var Sketchy = {
-    fromCanvas: function(canvas) {
+    fromCanvas: function(canvas, options) {
       var overlay      = createOverlay(canvas);
       var exportButton = overlay.querySelector('button.export');
       var canvasWidth  = canvas.width;
@@ -11,6 +11,10 @@
       var drawing      = false;
       var brushSize    = 1;
       var brushColor   = 'black';
+
+      // Set default options
+      options = options || {};
+      options.exportLocation = options.exportLocation || canvas.parentNode;
 
       function createElement(nodeName, className) {
         var element = doc.createElement(nodeName);
@@ -157,7 +161,7 @@
       exportButton.addEventListener('click', function() {
         var img = doc.createElement('img');
         img.src = canvas.toDataURL();
-        canvas.parentNode.insertBefore(img, canvas.nextSibling);
+        options.exportLocation.appendChild(img);
       });
 
       doc.addEventListener('keypress', function(e) {
